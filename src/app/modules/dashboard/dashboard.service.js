@@ -2,11 +2,19 @@
 
 (function() {
 
-  var DashboardService = function($log) {
-
+  var DashboardService = function($http, $log, ENV) {
+  	this.getWeather = function(IDs) {
+      return $http({
+        method: 'GET',
+        url: ENV.API.URL + ENV.API.VERSION + 'group?id='+IDs+'&APPID='+ENV.API.KEY+'&units=metric',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+    }
   };
 
-  DashboardService.$inject = ['$log'];
+  DashboardService.$inject = ['$http', '$log', 'ENV'];
 
   angular
     .module('weather-now.dashboard')

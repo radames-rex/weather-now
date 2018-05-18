@@ -4,9 +4,10 @@
   angular
     .module('weather-now')
     .constant('ENV', {
-      api: {
-        url : 'https://api.openweathermap.org/',
-        token : '122131231'
+      API: {
+        URL : 'https://api.openweathermap.org/',
+        VERSION: 'data/2.5/',
+        KEY : '8f2a9859cbabe29d7885e49eb2398e6b'
       }
     })
 })();
