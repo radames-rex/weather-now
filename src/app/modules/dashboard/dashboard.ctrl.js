@@ -2,7 +2,7 @@
 
 (function() {
 
-  var DashboardCtrl = function($scope, $interval, DashboardService, $cookies, Spin, $window) {
+  var DashboardCtrl = function($scope, $interval, $timeout, DashboardService, $cookies, Spin, $window) {
   	var vm = this;
 
   	// ID respectivos => Nuuk, Urubici, Nairobi
@@ -37,6 +37,7 @@
   	function init() {
   		vm.weather = [];
   		var weatherFromCache = $cookies.getObject('weather'); // Verifica o cache
+      console.log(weatherFromCache);
   		if (weatherFromCache) {
   			vm.weather = weatherFromCache;
   		} else {
@@ -56,15 +57,15 @@
 	  					});
             }
             Spin.stop($('.card--'+key));
+            var expireDate = new Date(Date.now() + 600000);
+            $cookies.putObject('weather', vm.weather, {'expires': expireDate}); // Armazena dados no cache
           });
         });
-				var expireDate = new Date(Date.now() + 600000);
-				$cookies.putObject('weather', vm.weather, {'expires': expireDate}); // Armazena dados no cache
 	  	}
   	}
   };
 
-  DashboardCtrl.$inject = ['$scope', '$interval', 'DashboardService', '$cookies', 'Spin', '$window'];
+  DashboardCtrl.$inject = ['$scope', '$interval', '$timeout', 'DashboardService', '$cookies', 'Spin', '$window'];
 
   angular
     .module('weather-now.dashboard')
