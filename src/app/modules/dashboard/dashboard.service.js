@@ -3,6 +3,10 @@
 (function() {
 
   var DashboardService = function($http, $log, ENV) {
+
+    /*
+     * Faz a requisição para a API do tempo traz informações climáticas de determinada cidade (by ID).
+     */
   	this.getWeather = function(IDs) {
       return $http({
         method: 'GET',

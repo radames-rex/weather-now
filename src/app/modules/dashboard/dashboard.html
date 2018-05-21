@@ -9,16 +9,16 @@
 				<div class="card-footer">
 					<ul class="conditions" ng-if="!vm.thisIsMobileScreen && $index === 1 || vm.thisIsMobileScreen && $index === 0">
 						<li>
-							<h3>Humidity</h3>
+							<h3>{{ 'Humidity' | translate }}</h3>
 							<span>{{ location.humidity }}<small>%</small></span>
 						</li>
 						<li>
-							<h3>Pressure</h3>
+							<h3>{{ 'Pressure' | translate }}</h3>
 							<span>{{ location.pressure }}<small>hPa</small></span>
 						</li>
 					</ul>
 					<div class="updatedAt">
-						<span>Updated at {{ location.updatedAt }}</span>
+						<span>{{ 'Updated at' | translate }} {{ location.updatedAt }}</span>
 					</div>
 				</div>
 			</li>

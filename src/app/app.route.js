@@ -13,8 +13,9 @@
       prefix: 'app/translate/messages-',
       suffix: '.json'
     });
+    $translateProvider.preferredLanguage('en-US');
     // $translateProvider.preferredLanguage('pt-BR');
-    $translateProvider.preferredLanguage(navigator.language);
+    // $translateProvider.preferredLanguage(navigator.language);
 
     // Configuração dos estados e rotas da aplicação
     $stateProvider

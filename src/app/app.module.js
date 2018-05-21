@@ -7,7 +7,6 @@
       'ngAria',
       'ui.router',
       'pascalprecht.translate',
-      'toastr',
 
       'weather-now.components',
       'weather-now.filters',

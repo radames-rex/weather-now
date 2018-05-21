@@ -10,12 +10,19 @@
 
   	vm.weather = [];
 
+    // Verifica se as dimensões da tela são mobile ou desktop
     vm.thisIsMobileScreen = $window.innerWidth <= 640;
 
+    // Recall de 10 em 10 minutos
   	$interval(function() {
   		init();
   	}, 601000);
 
+    // Para testes
+    vm.colorWeather = colorWeather;
+    vm.init = init;
+
+    // Define as cores de acordo com a temperatura
   	function colorWeather(temp) {
   		var color = '';
   		if (temp <= 5) color = 'weather-cold';
@@ -29,8 +36,8 @@
 
   	function init() {
   		vm.weather = [];
-  		var weatherFromCache = $cookies.getObject('weather');
-  		if (weatherFromCache == 9) {
+  		var weatherFromCache = $cookies.getObject('weather'); // Verifica o cache
+  		if (weatherFromCache) {
   			vm.weather = weatherFromCache;
   		} else {
         _.forEach(citiesIDs, function(ID, key) {
@@ -52,7 +59,7 @@
           });
         });
 				var expireDate = new Date(Date.now() + 600000);
-				$cookies.putObject('weather', vm.weather, {'expires': expireDate});
+				$cookies.putObject('weather', vm.weather, {'expires': expireDate}); // Armazena dados no cache
 	  	}
   	}
   };
