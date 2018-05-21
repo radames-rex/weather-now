@@ -81,3 +81,37 @@
     }
   }
 }
+
+// Tablet
+@media only screen and (min-width: 40em) and (max-width: 960px) {
+  .dashboard {
+    &-weather {
+      &-list {
+        .card {
+          min-width: 28vw;
+          margin: 0 2vw;
+        }
+      }
+    }
+  }
+}
+
+// Mobile
+@media only screen and (max-width: 40em) {
+  .dashboard {
+    height: 100%;
+    padding: 68px 0 12px;
+
+    &-weather {
+      &-list {
+        display: flex;
+        flex-direction: column;
+
+        .card {
+          min-width: 80vw;
+          margin: 5vw 32px;
+        }
+      }
+    }
+  }
+}

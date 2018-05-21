@@ -6,7 +6,7 @@
   	this.getWeather = function(IDs) {
       return $http({
         method: 'GET',
-        url: ENV.API.URL + ENV.API.VERSION + 'group?id='+IDs+'&APPID='+ENV.API.KEY+'&units=metric',
+        url: ENV.API.URL + ENV.API.VERSION + 'weather?id='+IDs+'&APPID='+ENV.API.KEY+'&units=metric',
         headers: {
           'Content-Type': 'application/json'
         }

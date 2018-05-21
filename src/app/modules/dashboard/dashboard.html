@@ -1,13 +1,13 @@
 <section class="dashboard">
 	<div class="dashboard-weather">
 		<ul class="dashboard-weather-list">
-			<li class="card" ng-repeat="location in vm.weather">
+			<li class="card card-{{$index}}" ng-repeat="location in vm.weather">
 				<h2 class="card-title">{{ location.city }}, {{ location.country }}</h2>
 				<div class="card-content">
 					<span ng-class="location.tempColor">{{ location.temp }}&deg;</span>
 				</div>
 				<div class="card-footer">
-					<ul class="conditions">
+					<ul class="conditions" ng-if="!vm.thisIsMobileScreen && $index === 1 || vm.thisIsMobileScreen && $index === 0">
 						<li>
 							<h3>Humidity</h3>
 							<span>{{ location.humidity }}<small>%</small></span>

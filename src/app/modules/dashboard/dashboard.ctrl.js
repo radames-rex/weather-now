@@ -2,13 +2,15 @@
 
 (function() {
 
-  var DashboardCtrl = function($scope, $interval, DashboardService, $cookies) {
+  var DashboardCtrl = function($scope, $interval, DashboardService, $cookies, Spin, $window) {
   	var vm = this;
 
   	// ID respectivos => Nuuk, Urubici, Nairobi
-  	var citiesIDs = '3421319,3445709,184745';
+    var citiesIDs = ['3421319','3445709','184745'];
 
   	vm.weather = [];
+
+    vm.thisIsMobileScreen = $window.innerWidth <= 640;
 
   	$interval(function() {
   		init();
@@ -28,12 +30,14 @@
   	function init() {
   		vm.weather = [];
   		var weatherFromCache = $cookies.getObject('weather');
-  		if (weatherFromCache) {
+  		if (weatherFromCache == 9) {
   			vm.weather = weatherFromCache;
   		} else {
-	  		DashboardService.getWeather(citiesIDs).then(function(response) {
-	  			if (response.data && response.data.list && response.data.list.length > 0) {
-	  				_.forEach(response.data.list, function(location) {
+        _.forEach(citiesIDs, function(ID, key) {
+          Spin.start($('.card--'+key));
+          DashboardService.getWeather(ID).then(function(response) {
+  	  			if (response.data) {
+  	  				var location = response.data;
 	  					vm.weather.push({
 	  						city			: location.name,
 	  						country   : location.sys.country,
@@ -43,16 +47,17 @@
 	  						updatedAt : moment(new Date()).format('HH:mm:ss A'),
 	  						tempColor : colorWeather(location.main.temp)
 	  					});
-	  				});
-	  				var expireDate = new Date(Date.now() + 600000);
-	  				$cookies.putObject('weather', vm.weather, {'expires': expireDate});
-	  			}
-	  		});
+            }
+            Spin.stop($('.card--'+key));
+          });
+        });
+				var expireDate = new Date(Date.now() + 600000);
+				$cookies.putObject('weather', vm.weather, {'expires': expireDate});
 	  	}
   	}
   };
 
-  DashboardCtrl.$inject = ['$scope', '$interval', 'DashboardService', '$cookies'];
+  DashboardCtrl.$inject = ['$scope', '$interval', 'DashboardService', '$cookies', 'Spin', '$window'];
 
   angular
     .module('weather-now.dashboard')
