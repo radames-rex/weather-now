@@ -18,6 +18,8 @@ Para rodar o servidor:
 
 `gulp serve`
 
+Abra seu browser e acesse: `localhost:3000`
+
 Para gerar o build para produção:
 
 `gulp build`
