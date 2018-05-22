@@ -1,90 +1,9 @@
 <section class="dashboard">
 	<div class="dashboard-weather">
 		<ul class="dashboard-weather-list">
-			<!-- <li class="card card-{{$index}}" ng-repeat="location in vm.weather">
-				<h2 class="card-title">{{ location.city }}, {{ location.country }}</h2>
-				<div class="card-content">
-					<span ng-class="location.tempColor">{{ location.temp }}&deg;</span>
-				</div>
-				<div class="card-footer">
-					<ul class="conditions" ng-if="!vm.thisIsMobileScreen && $index === 1 || vm.thisIsMobileScreen && $index === 0">
-						<li>
-							<h3>{{ 'Humidity' | translate }}</h3>
-							<span>{{ location.humidity }}<small>%</small></span>
-						</li>
-						<li>
-							<h3>{{ 'Pressure' | translate }}</h3>
-							<span>{{ location.pressure }}<small>hPa</small></span>
-						</li>
-					</ul>
-					<div class="updatedAt">
-						<span>{{ 'Updated at' | translate }} {{ location.updatedAt }}</span>
-					</div>
-				</div>
-			</li> -->
-			<li class="card card-0">
-				<h2 class="card-title">{{ vm.weather[0].locale }}</h2>
-				<div class="card-content">
-					<span ng-class="vm.weather[0].tempColor">{{ vm.weather[0].temp }}</span>
-				</div>
-				<div class="card-footer">
-					<ul class="conditions" ng-if="vm.thisIsMobileScreen" ng-show="vm.weather[0]">
-						<li>
-							<h3>{{ 'Humidity' | translate }}</h3>
-							<span>{{ vm.weather[0].humidity }}<small>%</small></span>
-						</li>
-						<li>
-							<h3>{{ 'Pressure' | translate }}</h3>
-							<span>{{ vm.weather[0].pressure }}<small>hPa</small></span>
-						</li>
-					</ul>
-					<div class="updatedAt" ng-show="vm.weather[0]">
-						<span>{{ 'Updated at' | translate }} {{ vm.weather[0].updatedAt }}</span>
-					</div>
-				</div>
-			</li>
-			<li class="card card-1">
-				<h2 class="card-title">{{ vm.weather[1].locale }}</h2>
-				<div class="card-content">
-					<span ng-class="vm.weather[1].tempColor">{{ vm.weather[1].temp }}</span>
-				</div>
-				<div class="card-footer">
-					<ul class="conditions" ng-if="!vm.thisIsMobileScreen" ng-show="vm.weather[1]">
-						<li>
-							<h3>{{ 'Humidity' | translate }}</h3>
-							<span>{{ vm.weather[1].humidity }}<small>%</small></span>
-						</li>
-						<li>
-							<h3>{{ 'Pressure' | translate }}</h3>
-							<span>{{ vm.weather[1].pressure }}<small>hPa</small></span>
-						</li>
-					</ul>
-					<div class="updatedAt">
-						<span ng-show="vm.weather[1]">{{ 'Updated at' | translate }} {{ vm.weather[1].updatedAt }}</span>
-					</div>
-				</div>
-			</li>
-			<li class="card card-2">
-				<h2 class="card-title">{{ vm.weather[2].locale }}</h2>
-				<div class="card-content">
-					<span ng-class="vm.weather[2].tempColor">{{ vm.weather[2].temp }}</span>
-				</div>
-				<div class="card-footer">
-					<ul class="conditions" ng-if="false">
-						<li>
-							<h3>{{ 'Humidity' | translate }}</h3>
-							<span>{{ vm.weather[2].humidity }}<small>%</small></span>
-						</li>
-						<li>
-							<h3>{{ 'Pressure' | translate }}</h3>
-							<span>{{ vm.weather[2].pressure }}<small>hPa</small></span>
-						</li>
-					</ul>
-					<div class="updatedAt" ng-show="vm.weather[2]">
-						<span>{{ 'Updated at' | translate }} {{ vm.weather[2].updatedAt }}</span>
-					</div>
-				</div>
-			</li>
+			<location data="vm.weather[0]" order="0" mobile="vm.thisIsMobileScreen" cache="vm.hasCache"></location>
+			<location data="vm.weather[1]" order="1" mobile="vm.thisIsMobileScreen" cache="vm.hasCache"></location>
+			<location data="vm.weather[2]" order="2" mobile="vm.thisIsMobileScreen" cache="vm.hasCache"></location>
 		</ul>
 	</div>
 </section>

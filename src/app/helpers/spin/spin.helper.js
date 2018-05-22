@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('weather-now.components')
+    .module('weather-now.helpers')
     .factory('Spin', Spin);
 
   /** @ngInject */

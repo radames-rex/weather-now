@@ -21,6 +21,7 @@
     // Para testes
     vm.colorWeather = colorWeather;
     vm.init = init;
+    vm.hasCache = false;
 
     // Define as cores de acordo com a temperatura
     function colorWeather(temp) {
@@ -37,11 +38,12 @@
     function init() {
       vm.weather = [];
       var weatherFromCache = $cookies.getObject('weather'); // Verifica o cache
-      if (weatherFromCache == 9) {
+      if (weatherFromCache) {
+        vm.hasCache = true;
         vm.weather = weatherFromCache;
       } else {
+        vm.hasCache = false;
         _.forEach(citiesIDs, function(ID, key) {
-          Spin.start($('.card-'+key+' .card-content'), true);
           DashboardService.getWeather(ID).then(function(response) {
             if (response.data) {
               var location = response.data;
