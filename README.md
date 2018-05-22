@@ -6,7 +6,7 @@
 
 Para instalar as dependências de desenvolvimento:
 
-`sudo npm install -g gulp-cli karma-cli`
+`npm install -g gulp-cli karma-cli`
 
 `npm install`
 
