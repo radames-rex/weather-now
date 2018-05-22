@@ -37,26 +37,25 @@
     function init() {
       vm.weather = [];
       var weatherFromCache = $cookies.getObject('weather'); // Verifica o cache
-      console.log(weatherFromCache);
-      if (weatherFromCache) {
+      if (weatherFromCache == 9) {
         vm.weather = weatherFromCache;
       } else {
         _.forEach(citiesIDs, function(ID, key) {
-          Spin.start($('.card--'+key));
           DashboardService.getWeather(ID).then(function(response) {
+            Spin.start($('.card'+key), true);
             if (response.data) {
               var location = response.data;
               vm.weather.push({
-                city			: location.name,
+                city      : location.name,
                 country   : location.sys.country,
-                temp			: Math.ceil(location.main.temp),
+                temp      : Math.ceil(location.main.temp),
                 humidity  : Math.ceil(location.main.humidity),
                 pressure  : Math.ceil(location.main.pressure),
                 updatedAt : moment(new Date()).format('HH:mm:ss A'),
                 tempColor : colorWeather(location.main.temp)
               });
             }
-            Spin.stop($('.card--'+key));
+            Spin.stop($('.card'+key), true);
             var expireDate = new Date(Date.now() + 600000);
             $cookies.putObject('weather', vm.weather, {'expires': expireDate}); // Armazena dados no cache
           });
