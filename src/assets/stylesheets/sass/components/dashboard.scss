@@ -28,6 +28,7 @@
           border: 1px solid #EBEBEB;
           border-width: 0 0 1px 0;
           color: #737C84;
+          min-height: 12px;
         }
 
         &-content {
@@ -35,11 +36,13 @@
           text-align: center;
           font-weight: 400;
           font-size: 88px;
+          min-height: 24px;
         }
 
         &-footer {
           padding: 16px 0;
           background-color: rgba(#F1F1F1, 0.5);
+          min-height: 42px;
           
           .conditions { 
             display: flex;

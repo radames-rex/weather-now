@@ -41,21 +41,20 @@
         vm.weather = weatherFromCache;
       } else {
         _.forEach(citiesIDs, function(ID, key) {
+          Spin.start($('.card-'+key+' .card-content'), true);
           DashboardService.getWeather(ID).then(function(response) {
-            Spin.start($('.card'+key), true);
             if (response.data) {
               var location = response.data;
               vm.weather.push({
-                city      : location.name,
-                country   : location.sys.country,
-                temp      : Math.ceil(location.main.temp),
+                locale    : location.name+', '+location.sys.country,
+                temp      : Math.ceil(location.main.temp)+'º',
                 humidity  : Math.ceil(location.main.humidity),
                 pressure  : Math.ceil(location.main.pressure),
                 updatedAt : moment(new Date()).format('HH:mm:ss A'),
                 tempColor : colorWeather(location.main.temp)
               });
             }
-            Spin.stop($('.card'+key), true);
+            Spin.stop($('.card-'+key+' .card-content'), true);
             var expireDate = new Date(Date.now() + 600000);
             $cookies.putObject('weather', vm.weather, {'expires': expireDate}); // Armazena dados no cache
           });
