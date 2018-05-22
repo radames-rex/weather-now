@@ -30,7 +30,7 @@ Para rodar os testes unitários:
 
 `gulp test`
 
-Para rodar os testes e2e:
+Para rodar os testes e2e (TO DO):
 
 `gulp protractor`
 

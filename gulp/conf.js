@@ -16,7 +16,7 @@ exports.paths = {
   test: 'tests',
   dist: 'dist',
   tmp: '.tmp',
-  e2e: 'e2e'
+  e2e: 'tests/e2e'
 };
 
 /**
