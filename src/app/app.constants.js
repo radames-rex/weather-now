@@ -9,5 +9,5 @@
         VERSION: 'data/2.5/',
         KEY : '8f2a9859cbabe29d7885e49eb2398e6b'
       }
-    })
+    });
 })();

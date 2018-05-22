@@ -5,7 +5,7 @@
    * Controller para o Header e o container que encapsula a aplicação.
    */
   var MainCtrl = function($scope) {
-    console.log("Plus Ultra!");
+    console.log('Plus Ultra!');
   };
 
   MainCtrl.$inject = ['$scope'];

@@ -7,7 +7,7 @@
     /*
      * Faz a requisição para a API do tempo traz informações climáticas de determinada cidade (by ID).
      */
-  	this.getWeather = function(IDs) {
+    this.getWeather = function(IDs) {
       return $http({
         method: 'GET',
         url: ENV.API.URL + ENV.API.VERSION + 'weather?id='+IDs+'&APPID='+ENV.API.KEY+'&units=metric',
@@ -15,7 +15,7 @@
           'Content-Type': 'application/json'
         }
       });
-    }
+    };
   };
 
   DashboardService.$inject = ['$http', '$log', 'ENV'];
